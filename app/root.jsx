@@ -1,11 +1,15 @@
 import { Outlet, LiveReload, Link, Meta } from "@remix-run/react"
+import globalStylesUrl from "./styles/global.css"
+
+export const links = () => [{ rel: 'stylesheet', href: globalStylesUrl }]
+
 
 export const meta = () => {
   const description = "Take home todo app built with remix.js"
   const keywords = 'Remix.js, React.js, Tailwind CSS'
   return {
     description,
-    keywords
+    keywords,
   }
 }
 
