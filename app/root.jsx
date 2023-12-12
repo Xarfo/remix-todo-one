@@ -53,10 +53,13 @@ function Layout({children}) {
         </Link>
         <ul className="nav">
           <li>
-            <Link to='/todos'>
-              Todo
+            <Link to='/todo'>
+              TodoList
             </Link>
           </li>
+          <Link to='/todo/new'>
+              TodoForm
+            </Link>
         </ul>
       </nav>
       <div className="c">

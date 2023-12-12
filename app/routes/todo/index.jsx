@@ -16,7 +16,7 @@ export const loader = () => {
     return data
 }
 
-function TodoItem() {
+function TodoList() {
     // const data = useLoaderData() destructured as below
     const {todos} = useLoaderData()
 
@@ -42,4 +42,4 @@ function TodoItem() {
   )
 }
 
-export default TodoItem
+export default TodoList
