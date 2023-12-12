@@ -1,4 +1,13 @@
-import { Outlet, LiveReload, Link } from "@remix-run/react"
+import { Outlet, LiveReload, Link, Meta } from "@remix-run/react"
+
+export const meta = () => {
+  const description = "Take home todo app built with remix.js"
+  const keywords = 'Remix.js, React.js, Tailwind CSS'
+  return {
+    description,
+    keywords
+  }
+}
 
 export default function App () {
   return (
@@ -14,6 +23,10 @@ export default function App () {
 function Document({ children, title }) {
   return (
     <html lang='en'>
+      {/* <meta charSet='utf-8' />
+      <meta name='viewport' content='width=device-width,
+      initial-scale=1' />
+      <Meta /> */}
       <head>
         <title>{ title ? title : 'Remix Blog'}</title>
       </head>
@@ -32,7 +45,7 @@ function Layout({children}) {
     <>
       <nav className='navbar'>
         <Link to='/' className='logo'>
-          Remix Todo
+          Remix Todos
         </Link>
         <ul className="nav">
           <li>
