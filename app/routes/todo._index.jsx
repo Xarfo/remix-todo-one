@@ -20,6 +20,8 @@ function TodoList() {
     // const data = useLoaderData() destructured as below
     const {todos} = useLoaderData()
 
+  // @todo: add toggle on/off
+
   return (
     <div>
         <div className="page-header">
