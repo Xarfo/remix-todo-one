@@ -1,17 +1,16 @@
 import { useLoaderData, Link } from '@remix-run/react'
+import { db } from '.././utils/db.server'
 import React from 'react'
 // import { useLoaderData } from 'react-router-dom';
 
-export const loader = () => {
-console.log(123)
+export const loader =  async () => {
+//console.log(123)
     // hard code data to see what is rendered
     const data = {
-        todos: [
-            {id:1, title: 'Todo 1', body: 'This is a test todo'},
-            {id:2, title: 'Todo 2', body: 'This is a test todo'},
-            {id:3, title: 'Todo 3', body: 'This is a test todo'},
-            {id:4, title: 'Todo 4', body: 'This is a test todo'}
-        ]
+        todos: await db.todo.findMany({
+            take: 20,
+            select: {id: true, title: true}
+        }),
     }
     return data
 }

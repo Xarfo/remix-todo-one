@@ -1,9 +1,12 @@
-import { Outlet } from '@remix-run/react'
+import { Outlet, useLoaderData } from '@remix-run/react'
 
 function Todo() {
+
+  const { todo } = useLoaderData()
   return (
     <>
-      <Outlet />
+    {todo.title}
+    
     </>
   )
 }

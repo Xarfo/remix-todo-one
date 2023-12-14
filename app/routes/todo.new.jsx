@@ -1,5 +1,6 @@
-import { json, redirect } from '@remix-run/node'
+import { redirect } from '@remix-run/node'
 import { Link } from '@remix-run/react'
+import { db } from '.././utils/db.server'
 
 
 
@@ -12,9 +13,11 @@ export const action = async ({ request }) => {
   const body = form.get('body')
   
   const fields = { title, body }
+
+  const todo = await db.todo.create({data: fields})
   // console.log(fields)
  // @todo -submit to database
-  return redirect(`/todo`)
+  return redirect(`/todo/${todo.id}`)
 }
 
 
