@@ -3,6 +3,9 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "prisma": {
+    "seed": "node prisma/seed"
+  },
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual",
