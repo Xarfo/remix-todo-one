@@ -57,9 +57,11 @@ function Layout({children}) {
               TodoList
             </Link>
           </li>
+          <li>
           <Link to='/todo/new'>
               TodoForm
             </Link>
+          </li>
         </ul>
       </nav>
       <div className="c">

@@ -3,7 +3,7 @@ import React from 'react'
 // import { useLoaderData } from 'react-router-dom';
 
 export const loader = () => {
-    // console.log(123)
+console.log(123)
     // hard code data to see what is rendered
     const data = {
         todos: [

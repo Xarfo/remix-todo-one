@@ -10,8 +10,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model POST {
-  id String @id @default(uuid())
-  title String @default()
-  body String @default()
+model Todo {
+  id    String @id @default(uuid())
+  title String 
+  body  String 
 }
