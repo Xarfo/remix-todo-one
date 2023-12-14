@@ -1,5 +1,5 @@
 import { redirect } from '@remix-run/node'
-import { Link } from '@remix-run/react'
+import { useParams, Link } from '@remix-run/react'
 import { db } from '.././utils/db.server'
 
 
@@ -9,13 +9,16 @@ export const action = async ({ request }) => {
   //console.log(123)
   const form = await request.formData()
   //console.log(form)
+  //const params = useParams()
   const title = form.get('title')
   const body = form.get('body')
   
   const fields = { title, body }
 
+  console.log(fields)
+
   const todo = await db.todo.create({data: fields})
-  // console.log(fields)
+  
  // @todo -submit to database
   return redirect(`/todo/${todo.id}`)
 }
@@ -38,7 +41,7 @@ function TodoForm() {
             <input
               type='text'
               name='title'
-              id='title'
+              id='id'
             />
           <div className='form-control'>
             <label htmlFor='body'>Add Task</label>

@@ -1,39 +1,38 @@
 import React from 'react'
-import { Link, useLoaderData } from '@remix-run/react'
+import { Link, useParams, useLoaderData } from '@remix-run/react'
 import { redirect } from '@remix-run/node'
-import { db } from '.././utils/db.server'
+import { db } from '../utils/db.server'
+
 
 export const loader = async ({ params }) => {
+  // console.log(123)
   const todo = await db.todo.findUnique({
-    where: { id: params.todoId },
+    where: { id: params.id },
   })
   if (!todo) throw new Error('Todo not found')
   const data = { todo }
-  console.log(data)
   return data
 }
 
-// export const action = async ({ request, params }) => {
-//   const form = await request.formData()
-//   if (form.get('_method') === 'delete') {
+  export const action = async ({ request, params }) => {
+    const form = await request.formData()
+    if (form.get('_method') === 'delete') {
+  
+      const todo = await db.todo.findUnique({
+        where: { id: params.id },
+      })
+  
+      if (!todo) throw new Error('Todo not found')
+  
     
-//     const todo = await db.todo.findUnique({
-//       where: { id: params.todoId },
-//     })
-
-//     if (!todo) throw new Error('Todo not found')
-
-//     if (todo) {
-//       await db.post.delete({ where: { id: params.todoId } })
-//     }
-
-//     return redirect(`/todo`)
-//   }
-// }
-
-function Todo() {
+        await db.todo.delete({ where: { id: params.id } })
+  
+      return redirect('/posts')
+    }
+  }
+// Single Todo with delete button ----> broken!
+function TodoId() {
   const { todo } = useLoaderData()
-
   return (
     <div>
       <div className='page-header'>
@@ -55,5 +54,4 @@ function Todo() {
     </div>
   )
 }
-
-export default Todo
+export default TodoId

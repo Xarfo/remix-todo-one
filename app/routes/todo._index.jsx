@@ -4,7 +4,6 @@ import React from 'react'
 // import { useLoaderData } from 'react-router-dom';
 
 export const loader =  async () => {
-//console.log(123)
     // hard code data to see what is rendered
     const data = {
         todos: await db.todo.findMany({
@@ -24,7 +23,7 @@ function TodoList() {
   return (
     <div>
         <div className="page-header">
-            <h1>Todo</h1>
+            {/* <h1>Todo</h1> */}
             <Link to='/todo/new' className='btn'>
                 Add Todo
             </Link>
@@ -33,7 +32,7 @@ function TodoList() {
         <ul className="todo-list">
             {todos.map((todo) => (
                 <li key={todo.id}>
-                    <Link to={todo.id}>
+                    <Link to={`/todo/${todo.id}`}>
                         <h3>{todo.title}</h3>
                     </Link>
                 </li>
