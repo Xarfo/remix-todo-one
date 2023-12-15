@@ -12,6 +12,7 @@ datasource db {
 
 model Todo {
   id    String @id @default(uuid())
-  title String 
+  title String
+  done  Boolean @default(false)
   body  String 
 }

@@ -28,9 +28,11 @@ function Document({ children, title }) {
   return (
     <html lang='en'>
       <head>
+      <link href="/dist/output.css" rel="stylesheet"></link>
         <title>{ title ? title : 'Remix Todo App'}</title>
       </head>
       <body>
+        {/* <h1 class='text-3xl text-red-500'>Tailwind Test</h1> */}
         {children}
         {process.env.NODE_ENV === 'development' ?
         <LiveReload /> : null}
@@ -48,16 +50,16 @@ function Layout({children}) {
           <h1>Todo Application(Remix + Tailwind)</h1>
         </Link>
         <ul className="nav">
-          <li>
+            <button>
             <Link to='/todo'>
-              View Task List
+              View Todo List
             </Link>
-          </li>
-          <li>
+            </button>
+          <button>
           <Link to='/todo/new'>
-              Add Task to List
+              Add Todo to List
             </Link>
-          </li>
+          </button>
         </ul>
       </nav>
       <div className="c">
