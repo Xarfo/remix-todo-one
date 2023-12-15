@@ -2,10 +2,7 @@ import {PrismaClient} from '@prisma/client'
 
 const db = new PrismaClient()
 
-
-
-
-const getTodo = () => {
+const getTodos = () => {
     return [
         {
             title: 'Remove logs',
@@ -29,7 +26,7 @@ const getTodo = () => {
 
 async function seed() {
     await Promise.all(
-        getTodo().map( todo => {
+        getTodos().map( todo => {
             return db.todo.create({data: todo})
         })
     )

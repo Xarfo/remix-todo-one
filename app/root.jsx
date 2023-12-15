@@ -1,5 +1,5 @@
-import { Outlet, LiveReload, Link, Meta } from "@remix-run/react"
-import globalStylesUrl from "./styles/global.css"
+import { Outlet, LiveReload, Link } from "@remix-run/react"
+
 
 export const links = () => [{ rel: 'stylesheet', href: globalStylesUrl }]
 
@@ -27,12 +27,8 @@ export default function App () {
 function Document({ children, title }) {
   return (
     <html lang='en'>
-      {/* <meta charSet='utf-8' />
-      <meta name='viewport' content='width=device-width,
-      initial-scale=1' />
-      <Meta /> */}
       <head>
-        <title>{ title ? title : 'Remix Blog'}</title>
+        <title>{ title ? title : 'Remix Todo App'}</title>
       </head>
       <body>
         {children}
@@ -49,17 +45,17 @@ function Layout({children}) {
     <>
       <nav className='navbar'>
         <Link to='/' className='logo'>
-          Remix Todos
+          <h1>Todo Application(Remix + Tailwind)</h1>
         </Link>
         <ul className="nav">
           <li>
             <Link to='/todo'>
-              TodoList
+              View Task List
             </Link>
           </li>
           <li>
           <Link to='/todo/new'>
-              TodoForm
+              Add Task to List
             </Link>
           </li>
         </ul>

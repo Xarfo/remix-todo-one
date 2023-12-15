@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link, useParams, useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
 import { redirect } from '@remix-run/node'
 import { db } from '../utils/db.server'
 
 
 export const loader = async ({ params }) => {
-  // console.log(123)
   const todo = await db.todo.findUnique({
     where: { id: params.id },
   })
@@ -21,16 +20,11 @@ export const loader = async ({ params }) => {
       const todo = await db.todo.findUnique({
         where: { id: params.id },
       })
-  
       if (!todo) throw new Error('Todo not found')
-  
-    
         await db.todo.delete({ where: { id: params.id } })
-  
-      return redirect('/posts')
+      return redirect('/todo')
     }
   }
-// Single Todo with delete button ----> broken!
 function TodoId() {
   const { todo } = useLoaderData()
   return (
