@@ -32,6 +32,10 @@ function TodoList() {
     });
   };
 
+  const handleToggle = (id) => {
+    toggleTodo(id);
+  };
+
   return (
     <div>
       <div className="page-header">
@@ -47,7 +51,7 @@ function TodoList() {
               <h3>{todo.title}</h3>
             </Link>
             <div>
-            <button >
+            <button onClick={() => handleToggle(todo.id)}>
               {todo.done ? 'Undone' : 'Done'}
             </button>
             </div>
